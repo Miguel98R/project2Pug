@@ -1,0 +1,57 @@
+doctype html
+html(lang="es")
+    head
+        include template/headSRC
+        title #{title}
+    body
+        .loading.show
+            p Cargando...
+            .spin
+        div.bg-black.p-4
+
+        .container.my-4
+
+            h1.fw-bolder.text-center HTLM converter to Pug
+
+            div.my-4
+                .row
+                    .col-6
+                        .card
+                            .card-header
+                                h5
+                                    i.far.fa-folder-open
+                                    |  Directorio de los archivos HTML
+                            .card-body
+                                input.form-control#inputOriginDir(placeholder='Ingresa la direccion del directorio de archivos HTML' type='text' )
+
+                    .col-6
+                        .card
+                            .card-header
+                                h5
+                                    i.fas.fa-folder
+                                    |   Directorio de salida:
+                            .card-body
+                                input.form-control#inputOutDir(placeholder='Ingresa la direccion del directorio de salida' type='text' )
+
+            div.text-center.my-4
+                .row
+                    .col-4
+                    .col-4
+                          button.btn.btn-success.btn-block#save_directories Convertir
+                    .col-4
+
+
+            footer.my-3
+                .text-center.p-3
+                    | © 2023
+                    a.text-dark.fw-bold  by Jose Miguel Rosas
+
+
+    include template/scripts
+    script( src='./public/core/js/common.js')
+    script( src='./public/core/js/home.js')
+
+
+
+
+
