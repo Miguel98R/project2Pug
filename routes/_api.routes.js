@@ -32,7 +32,7 @@ router.post('/convert/',async function(req,res){
 
                     const new_pugArchivo = html2pug(html, { tabs: true })
 
-                    //CREAR ARCHIVO 
+                    //CREAR ARCHIVO
                     fs.writeFile(path.join(outputDir, `${path.basename(file, '.html')}.pug`), new_pugArchivo, err => {
                         if (err) {
                             console.error(err);
