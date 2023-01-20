@@ -8,4 +8,4 @@ Example of directory paths to enter:
 - Output Directory : /home/mike98/Desktop/pug_files
 
 
-*2023 Jose Miguel Rosas Jimenez*
+*Mike Rosas 2020-2022. - HtmlToPug-Convertidor v1.0.0  - Desarrollado por: Jose Miguel Rosas Jimenez*
