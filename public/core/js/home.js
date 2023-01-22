@@ -20,7 +20,25 @@ $(document).ready(function (){
 
             notyf.success(response.message)
 
+
+
         })
+
+        setTimeout(function () {
+            $.post('/api/mover_convertidos/', {in_directori,out_directori}, function (response) {
+
+                notyf.success(response.message)
+
+            })
+
+
+        },900)
+
+
+
+
+
+
 
     })
 
