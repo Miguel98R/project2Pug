@@ -63,8 +63,8 @@ npm install
 ```
 npm run dev
 ```
-The project to be launched on port 3055 , this can be modified in the index.js in its defined sallida folder
-Then visit http://localhost:3055/index *
+The project to be launched on port 3055 , this can be modified in the index.js of your output folder  
+Then visit  http:///localhost:3055/index *
 
 
 Note: if in your template static files are in an **assets** folder, this folder will be saved in the **public** folder just move the contents to the root of the **public** folder for your template to work properly
