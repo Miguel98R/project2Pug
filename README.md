@@ -31,8 +31,8 @@ Then visit http://localhost:3008/*
 ---
 # Initializing template converted
 
-Once you have converted the template, you will notice that you have created a pre-estructura project ,
-an api-rest based on express js and a database connection in mongo db, this in order to help in the process of creating projects
+Once you have converted the template, you will notice that a structure has been created for your project ,
+an api-rest based on js express and a database connection in mongo db, this to help in the process of creating projects
 
 Converted views to pug are located in the views folder and static/library files are located in the public folder
 
