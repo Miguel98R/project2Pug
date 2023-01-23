@@ -71,7 +71,7 @@ Note: if in your template static files are in an **assets** folder, this folder 
 
 ---
 
-<h4 align="center">Mike Rosas © 2023  | HtmlToPug-Convertidor v1.0.0</h4>
+<h4 align="center">Mike Rosas © 2023  | HtmlToPug-Converter v1.0.0</h4>
 <h4 align="center">Developed by: Jose Miguel Rosas Jimenez</h4>
 
 
