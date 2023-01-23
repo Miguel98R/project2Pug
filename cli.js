@@ -1,5 +1,6 @@
+const {program} = require('commander')
 const express = require('express')
-const router = express.Router()
+
 const path = require('path');
 const html2pug = require('html2pug')
 const fs = require('fs-extra')
@@ -136,7 +137,7 @@ let deletePugFiles = function (folder) {
                 } else if (path.extname(filePath) === '.pug') {
                     fs.unlink(filePath, err => {
                         if (err) return console.error(err);
-                        console.log(`Deleted ${filePath}`);
+
                     });
                 }
             });
@@ -144,7 +145,7 @@ let deletePugFiles = function (folder) {
     });
 }
 
- let replacePathsInPugFiles = function(rootDir) {
+let replacePathsInPugFiles = function(rootDir) {
     // Obtener todos los archivos .pug en la raiz y subcarpetas
     const pugFiles = getAllFilesInDir(rootDir, '.pug');
 
@@ -182,7 +183,7 @@ let  getAllFilesInDir = function(dir, ext) {
     return files;
 }
 
- let removePugFromFileRoutes = function (filepath) {
+let removePugFromFileRoutes = function (filepath) {
     // Leer el contenido del archivo
     let fileContent = fs.readFileSync(filepath, 'utf8');
 
@@ -251,7 +252,7 @@ let CreateFoldersInPug_out = function (filepath) {
 
     fs.writeFile(filepath +'/'+ 'index.js', text, 'utf8',(err) => {
         if (err) throw err;
-        console.log('Archivo creado exitosamente!');
+
     });
 
 
@@ -283,7 +284,7 @@ let CreateFoldersInPug_out = function (filepath) {
 
     fs.writeFile(filepath +'/'+ 'package.json', text, 'utf8',(err) => {
         if (err) throw err;
-        console.log('Archivo creado exitosamente!');
+
     });
 
 
@@ -303,7 +304,7 @@ let CreateFoldersInPug_out = function (filepath) {
 
     fs.writeFile(filepath +'/'+ 'db.js', text, 'utf8',(err) => {
         if (err) throw err;
-        console.log('Archivo creado exitosamente!');
+
     });
 
     text = "const express = require('express')\n" +
@@ -313,70 +314,60 @@ let CreateFoldersInPug_out = function (filepath) {
 
     fs.writeFile(filepath +'/routes/'+ '_api.js',text, 'utf8',(err) => {
         if (err) throw err;
-        console.log('Archivo creado exitosamente!');
+
     });
 
 
 }
 
+program.version('1.0.0')
+program
+    .command('htmlToPug')
+    .description('html template converter to templates with pug as view engine \n')
+    .option('-i, --inDirectori <inDirectori...>', 'Directorio de entrada')
+    .option('-o, --OutDirectori <OutDirectori...>', 'Directorio de salida')
+    .action(async function ({inDirectori, OutDirectori}) {
 
-router.post('/convert/', async function (req, res) {
-    let {in_directori, out_directori} = req.body
+        let inPath = inDirectori[0]
+        let OutPath = OutDirectori[0]
 
-    try {
-
-        convertirHTMLaPug(in_directori, in_directori, out_directori)
-
-
-        res.status(200).json({
-            success: true, message: 'convirtiendo archivos'
-
-        })
-
-
-    } catch (e) {
-        console.error(e)
-        res.status(500).json({
-            success: false, message: 'error al convertir archivos'
-        })
-        return
-    }
-
-})
-
-router.post('/mover_convertidos/', async function (req, res) {
-    let {in_directori, out_directori} = req.body
-
-    try {
-
-        movePugFiles(out_directori)
-
-        fs.appendFileSync(out_directori + "/viewEngine/routes.js", `module.exports = router \n`);
-
-        if (fs.existsSync(in_directori + "/viewEngine")) {
-            fs.remove(in_directori + "/viewEngine");
-            deletePugFiles(in_directori);
-            replacePathsInPugFiles(out_directori)
-            removePugFromFileRoutes(out_directori + "/viewEngine/routes.js")
-            CreateFoldersInPug_out(out_directori)
-
+        let exists = fs.existsSync(inPath);
+        if (!exists) {
+            console.log('El directorio de entrada no existe')
+            return
         }
+        let exists_o = fs.existsSync(OutPath);
+        if (!exists_o) {
+            console.log('El directorio de salida no existe')
+
+            return
+        }
+        convertirHTMLaPug(inPath,inPath,OutPath)
+        console.log("-----------------CONVIRTIENDO----------------------------------------------")
+
+        setTimeout(function () {
 
 
-        res.status(200).json({
-            success: true,
-            message: 'Archivos convertidos con exito'
-        })
+            movePugFiles(OutPath)
+            console.log("-----------------MODIFICANDO DIRECTORIO SALIDA----------------------------------------------")
 
-    } catch (e) {
-        console.error(e)
-        res.status(500).json({
-            success: false, message: 'error al convertir archivos'
-        })
-        return
-    }
+            fs.appendFileSync(OutPath + "/viewEngine/routes.js", `module.exports = router \n`);
 
-})
+            if (fs.existsSync(inPath + "/viewEngine")) {
+                fs.remove(inPath + "/viewEngine");
+                deletePugFiles(inPath);
+                replacePathsInPugFiles(OutPath)
+                removePugFromFileRoutes(OutPath + "/viewEngine/routes.js")
+                CreateFoldersInPug_out(OutPath)
+
+                console.log("Archivos convertidos correctamente ")
+            }
+
+            console.log("-----------------DESCARGUE LOS MODULOS DE NODE JS EN LA CARPETA DE SALIDA----------------------------------------------")
 
 
-module.exports = router
+        },900)
+    })
+
+
+program.parse()
