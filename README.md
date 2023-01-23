@@ -28,5 +28,26 @@ Then visit http://localhost:3008/*
 
 *By default start on port 3008 , this can be modified in the index.js file
 
+---
+# Initializing template converted
 
-**Mike Rosas 2020-2022. - HtmlToPug-Convertidor v1.0.0  - Desarrollado por: Jose Miguel Rosas Jimenez**
+Once you have converted the template, you will notice that you have created a pre-estructura project ,
+an api-rest based on express js and a database connection in mongo db, this in order to help in the process of creating projects
+
+Converted views to pug are located in the views folder and static/library files are located in the public folder
+
+to initialize the project simply install the node modules and run the dev command
+
+
+```
+npm install
+```
+
+```
+npm run dev
+```
+The project to be launched on port 3055 , this can be modified in the index.js in its defined sallida folder
+Then visit http://localhost:3055/*
+
+
+**Mike Rosas 2023. - HtmlToPug-Convertidor v1.0.0  - developed by: Jose Miguel Rosas Jimenez**
