@@ -2,14 +2,13 @@ const express = require ('express')
 const morgan = require('morgan')
 const path = require('path')
 const bodyParser = require('body-parser')
-require('dotenv').config()
 
 const app = express()
 
 //configuraciones
 
-app.set('port',process.env.PORT || 3008 )
-app.set('appName',process.env.APP_NAME)
+app.set('port',3008 )
+app.set('appName',"htmlToPug-Converter")
 
 app.set('views', path.join(__dirname, 'views'))
 

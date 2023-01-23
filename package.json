@@ -27,7 +27,6 @@
   "homepage": "https://github.com/Miguel98R/HtmlToPug-Convertidor#readme",
   "dependencies": {
     "body-parser": "^1.20.1",
-    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "fs-extra": "^11.1.0",
     "html2pug": "^4.0.0",

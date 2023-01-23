@@ -26,7 +26,7 @@ npm run dev
 Then visit http://localhost:3008/*
 
 
-*By default start on port 3008 , this can be modified in the environment vairables file
+*By default start on port 3008 , this can be modified in the index.js file
 
 
 **Mike Rosas 2020-2022. - HtmlToPug-Convertidor v1.0.0  - Desarrollado por: Jose Miguel Rosas Jimenez**
