@@ -324,8 +324,8 @@ program.version('1.0.0')
 program
     .command('htmlToPug')
     .description('html template converter to templates with pug as view engine \n')
-    .option('-i, --inDirectori <inDirectori...>', 'Directorio de entrada')
-    .option('-o, --OutDirectori <OutDirectori...>', 'Directorio de salida')
+    .option('-i, --inDirectory <inDirectory...>', 'location of the folder where the files to be converted are')
+    .option('-o, --OutDirectory <OutDirectory...>', 'location of the folder where the converted files will be saved')
     .action(async function ({inDirectori, OutDirectori}) {
 
         let inPath = inDirectori[0]
@@ -333,23 +333,23 @@ program
 
         let exists = fs.existsSync(inPath);
         if (!exists) {
-            console.log('El directorio de entrada no existe')
+            console.log(' The input directory does not exist')
             return
         }
         let exists_o = fs.existsSync(OutPath);
         if (!exists_o) {
-            console.log('El directorio de salida no existe')
+            console.log('The input directory does not exist')
 
             return
         }
         convertirHTMLaPug(inPath,inPath,OutPath)
-        console.log("-----------------CONVIRTIENDO----------------------------------------------")
+        console.log(" ** ** ** **  ** ** Converting files ** ** ** ** **")
 
         setTimeout(function () {
 
 
             movePugFiles(OutPath)
-            console.log("-----------------MODIFICANDO DIRECTORIO SALIDA----------------------------------------------")
+            console.log(" ** ** ** **  ** ** modifying the output directory** ** ** ** **")
 
             fs.appendFileSync(OutPath + "/viewEngine/routes.js", `module.exports = router \n`);
 
@@ -360,10 +360,10 @@ program
                 removePugFromFileRoutes(OutPath + "/viewEngine/routes.js")
                 CreateFoldersInPug_out(OutPath)
 
-                console.log("Archivos convertidos correctamente ")
-            }
+                console.log(" ** ** ** **  ** ** modifying the output directory** ** ** ** **")
 
-            console.log("-----------------DESCARGUE LOS MODULOS DE NODE JS EN LA CARPETA DE SALIDA----------------------------------------------")
+                console.log("Files converted correctly")
+            }
 
 
         },900)
