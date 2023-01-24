@@ -4,6 +4,7 @@ const path = require('path');
 const html2pug = require('html2pug')
 const fs = require('fs-extra')
 
+
 let convertirHTMLaPug = function (ruta, original_path, out_directori) {
     fs.readdirSync(ruta, {withFileTypes: true}).forEach(file => {
 
@@ -77,7 +78,7 @@ let convertirHTMLaPug = function (ruta, original_path, out_directori) {
 
 }
 
-let movePugFiles = function(pug_salida) {
+let movePugFiles = function (pug_salida) {
 
     // obtener todos los archivos y carpetas en la raíz
     let files = fs.readdirSync(pug_salida);
@@ -105,14 +106,13 @@ let movePugFiles = function(pug_salida) {
         } else if (fs.lstatSync(filePath).isDirectory()) {
 
 
-            if (file === 'assets' || file === 'css' || file === 'js' || file === 'img' || file === 'images' || file === 'core' || file === 'fonts' || file == 'icon' || file == 'plugins' || file == 'scss' ) {
+            if (file =="vendor" || file == "owl-carousel" || file == "fontAwesome" || file == "font-awesome" || file === 'assets' || file === 'css' || file === 'js' || file === 'img' || file === 'images' || file === 'core' || file === 'fonts' || file == 'icon' || file == 'plugins' || file == 'scss') {
                 // mover la carpeta a la carpeta public
                 fs.renameSync(filePath, path.join(pug_salida, 'public', file));
 
             } else if (file !== 'viewEngine') {
                 fs.renameSync(filePath, path.join(pug_salida, 'views', file));
             }
-
 
 
         }
@@ -144,7 +144,7 @@ let deletePugFiles = function (folder) {
     });
 }
 
- let replacePathsInPugFiles = function(rootDir) {
+let replacePathsInPugFiles = function (rootDir) {
     // Obtener todos los archivos .pug en la raiz y subcarpetas
     const pugFiles = getAllFilesInDir(rootDir, '.pug');
 
@@ -169,7 +169,7 @@ let deletePugFiles = function (folder) {
 
 }
 
-let  getAllFilesInDir = function(dir, ext) {
+let getAllFilesInDir = function (dir, ext) {
     let files = [];
     fs.readdirSync(dir).forEach(file => {
         const filePath = path.join(dir, file);
@@ -182,7 +182,7 @@ let  getAllFilesInDir = function(dir, ext) {
     return files;
 }
 
- let removePugFromFileRoutes = function (filepath) {
+let removePugFromFileRoutes = function (filepath) {
     // Leer el contenido del archivo
     let fileContent = fs.readFileSync(filepath, 'utf8');
 
@@ -249,13 +249,10 @@ let CreateFoldersInPug_out = function (filepath) {
         "\n" +
         "})\n"
 
-    fs.writeFile(filepath +'/'+ 'index.js', text, 'utf8',(err) => {
+    fs.writeFile(filepath + '/' + 'index.js', text, 'utf8', (err) => {
         if (err) throw err;
         console.log('Archivo creado exitosamente!');
     });
-
-
-
 
 
     text = '{\n' +
@@ -281,12 +278,10 @@ let CreateFoldersInPug_out = function (filepath) {
         '  }\n' +
         '}\n'
 
-    fs.writeFile(filepath +'/'+ 'package.json', text, 'utf8',(err) => {
+    fs.writeFile(filepath + '/' + 'package.json', text, 'utf8', (err) => {
         if (err) throw err;
         console.log('Archivo creado exitosamente!');
     });
-
-
 
 
     text = "const mongoose = require('mongoose');\n" +
@@ -301,17 +296,17 @@ let CreateFoldersInPug_out = function (filepath) {
         "\n" +
         "});\n"
 
-    fs.writeFile(filepath +'/'+ 'db.js', text, 'utf8',(err) => {
+    fs.writeFile(filepath + '/' + 'db.js', text, 'utf8', (err) => {
         if (err) throw err;
         console.log('Archivo creado exitosamente!');
     });
 
     text = "const express = require('express')\n" +
-        "    const router = express.Router() \n"+
+        "    const router = express.Router() \n" +
         "module.exports = router"
 
 
-    fs.writeFile(filepath +'/routes/'+ '_api.js',text, 'utf8',(err) => {
+    fs.writeFile(filepath + '/routes/' + '_api.js', text, 'utf8', (err) => {
         if (err) throw err;
         console.log('Archivo creado exitosamente!');
     });
@@ -320,11 +315,30 @@ let CreateFoldersInPug_out = function (filepath) {
 }
 
 
+function indentHTML(dir) {
+    // obtener todos los archivos en la carpeta y subcarpetas
+    const files = getAllFilesInDir(dir);
+
+    // iterar a través de cada archivo
+    for (const file of files) {
+        // verificar si es un archivo HTML
+        if (path.extname(file) === ".html") {
+            // leer el contenido del archivo
+            let content = fs.readFileSync(file, "utf8");
+            // identar el contenido utilizando una expresión regular
+            content = content.replace(/^(?=\S)/gm, "  ");
+            // escribir el contenido identado de nuevo en el archivo
+            fs.writeFileSync(file, content, "utf8");
+        }
+    }
+}
+
 router.post('/convert/', async function (req, res) {
     let {in_directori, out_directori} = req.body
 
     try {
 
+        indentHTML(in_directori)
         convertirHTMLaPug(in_directori, in_directori, out_directori)
 
 
@@ -359,6 +373,7 @@ router.post('/mover_convertidos/', async function (req, res) {
             replacePathsInPugFiles(out_directori)
             removePugFromFileRoutes(out_directori + "/viewEngine/routes.js")
             CreateFoldersInPug_out(out_directori)
+
 
         }
 

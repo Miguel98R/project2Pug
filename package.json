@@ -33,6 +33,7 @@
     "html2pug": "^4.0.0",
     "morgan": "^1.10.0",
     "pug": "^3.0.2"
+
   },
   "devDependencies": {
     "nodemon": "^2.0.20"

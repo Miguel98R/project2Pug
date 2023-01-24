@@ -32,7 +32,7 @@ $(document).ready(function (){
             })
 
 
-        },900)
+        }, 1400)
 
 
 
