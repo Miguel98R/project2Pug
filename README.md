@@ -1,5 +1,4 @@
-
-<img  align="center" src="public/img/logo.png" />
+<div align="center"><img  src="public/img/logo.png" /></div>
 
 # HtmlToPug-Converter
 *html template converter to templates with pug as view engine*
