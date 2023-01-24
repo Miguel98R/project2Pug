@@ -326,10 +326,10 @@ program
     .description('html template converter to templates with pug as view engine \n')
     .option('-i, --inDirectory <inDirectory...>', 'location of the folder where the files to be converted are')
     .option('-o, --OutDirectory <OutDirectory...>', 'location of the folder where the converted files will be saved')
-    .action(async function ({inDirectori, OutDirectori}) {
+    .action(async function ({inDirectory, OutDirectory}) {
 
-        let inPath = inDirectori[0]
-        let OutPath = OutDirectori[0]
+        let inPath = inDirectory[0]
+        let OutPath = OutDirectory[0]
 
         let exists = fs.existsSync(inPath);
         if (!exists) {
