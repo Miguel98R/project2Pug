@@ -1,6 +1,6 @@
 {
   "name": "project2pug",
-  "version": "1.0.3",
+  "version": "1.0.8",
   "description": "Convert html file directories to pug",
   "main": "index.js",
   "scripts": {

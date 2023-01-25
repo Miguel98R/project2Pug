@@ -2,6 +2,7 @@ const path = require('path');
 const html2pug = require('html2pug')
 const minify = require('html-minifier').minify;
 const fs = require('fs-extra')
+const {spawn} = require('child_process');
 let convertirHTMLaPug = function (ruta, original_path, out_directori) {
     fs.readdirSync(ruta, {withFileTypes: true}).forEach(file => {
 
@@ -342,6 +343,18 @@ function minifyHTML(dir) {
     });
 }
 
+let start_npm = function () {
+    const dev = spawn('npm', ['run', 'dev']);
+    dev.stdout.on('data', data => console.log("one", data.toString()));
+    dev.stderr.on('data', data => console.error("two", data.toString()));
+}
+
+let init_npm = function () {
+    const dev = spawn('npm', ['run', 'dev']);
+    dev.stdout.on('data', data => console.log("one", data.toString()));
+    dev.stderr.on('data', data => console.error("two", data.toString()));
+}
+
 module.exports = {
     convertirHTMLaPug,
     movePugFiles,
@@ -349,5 +362,6 @@ module.exports = {
     replacePathsInPugFiles,
     removePugFromFileRoutes,
     CreateFoldersInPug_out,
-    minifyHTML
+    minifyHTML,start_npm
+    ,init_npm
 };

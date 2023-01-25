@@ -2,7 +2,7 @@
 const {program} = require('commander')
 const fs = require('fs-extra')
 const path = require('path');
-const {spawn} = require('child_process');
+
 
 let {
     convertirHTMLaPug,
@@ -11,7 +11,8 @@ let {
     replacePathsInPugFiles,
     removePugFromFileRoutes,
     CreateFoldersInPug_out,
-    minifyHTML
+    minifyHTML, start_npm
+    , init_npm
 } = require('./project2pug')
 
 
@@ -66,13 +67,25 @@ program
         }, 1400)
     })
 
+
 program
     .command('gui')
     .description('Start the server to view the app in the browser and from there convert files')
     .action(() => {
-        const dev = spawn('npm', ['run', 'dev']);
-        dev.stdout.on('data', data => console.log("one", data.toString()));
-        dev.stderr.on('data', data => console.error("two", data.toString()));
+
+
+        start_npm()
+
+    });
+
+
+program
+    .command('star-dev')
+    .description('Install the node modules in the output folder and start the server so you can see your template converted to pug')
+    .action(() => {
+
+        init_npm()
+        start_npm()
 
     });
 

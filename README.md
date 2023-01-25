@@ -26,8 +26,26 @@ npm run dev
 ```
 
 
-Then visit http://localhost:3008/*
+# Install by npm
 
+can also install the converter by npm
+
+command:
+```
+npm i -g project2pug
+```
+start converter interface
+
+command:
+```
+gui
+```
+example usage:
+```
+project2Pug gui
+```
+
+Then visit http://localhost:3008/*
 
 *By default start on port 3008 , this can be modified in the index.js file
 
@@ -52,19 +70,18 @@ example usage:
 project2Pug -i "/home/mike98/Desktop/html_files" -o "/home/mike98/Desktop/pug_files"
 ```
 
-Start web interface by CLI
+install node modules and start the server in the output folder
 
 command:
 ```
-gui
+star-dev
 ```
 example usage:
 ```
-project2Pug gui
+project2Pug star-dev
 ```
 
-Then visit http://localhost:3008/*
-*By default start on port 3008 , this can be modified in the index.js file
+
 
 ---
 # Initializing template converted
@@ -84,6 +101,9 @@ npm install
 ```
 npm run dev
 ```
+
+in the CLI section, the command to install the node modules and start the server in the output folder is shown
+
 The project to be launched on port 3055 , this can be modified in the index.js of your output folder  
 Then visit  http:///localhost:3055/index *
 
@@ -92,7 +112,7 @@ Note: if in your template static files are in an **assets** folder, this folder 
 
 ---
 
-<h4 align="center">Mike Rosas © 2023  | project2Pug v1.0.3</h4>
+<h4 align="center">Mike Rosas © 2023  | project2Pug v1.0.8</h4>
 <h4 align="center">Developed by: Jose Miguel Rosas Jimenez</h4>
 
 
