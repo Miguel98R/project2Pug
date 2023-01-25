@@ -2,7 +2,6 @@
 const {program} = require('commander')
 const fs = require('fs-extra')
 const path = require('path');
-
 const {spawn} = require('child_process');
 
 let {
@@ -12,8 +11,7 @@ let {
     replacePathsInPugFiles,
     removePugFromFileRoutes,
     CreateFoldersInPug_out,
-    minifyHTML, start_npm
-    , init_npm
+    minifyHTML
 } = require('./project2pug')
 
 
@@ -74,27 +72,29 @@ program
     .description('Start the server to view the app in the browser and from there convert files')
     .action(() => {
 
-
-        start_npm()
+        const dev = spawn('npm', ['run', 'dev']);
+        dev.stdout.on('data', data => console.log("one", data.toString()));
+        dev.stderr.on('data', data => console.error("two", data.toString()));
 
     });
 
-
 program
     .command('star-dev')
-    .description('Install the node modules in the output folder and start the server so you can see your template converted to pug')
+    .description('node modules')
     .action(() => {
+        const init = spawn('npm', ['install']);
+        init.stdout.on('data', data => console.log("one", data.toString()));
+        init.stderr.on('data', data => console.error("two", data.toString()));
 
-        const install = spawn('npm', ['install']);
-        install.stdout.on('data', data => console.log("i", data.toString()));
-        install.stderr.on('data', data => console.error("i error:", data.toString()));
 
-        setTimeout(function () {
+        setTimeout(function (){
+
             const dev = spawn('npm', ['run', 'dev']);
-            dev.stdout.on('data', data => console.log("run", data.toString()));
-            dev.stderr.on('data', data => console.error("run error:", data.toString()));
+            dev.stdout.on('data', data => console.log("one", data.toString()));
+            dev.stderr.on('data', data => console.error("two", data.toString()));
 
-        },300)
+        },2000)
+
 
     });
 

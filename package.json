@@ -1,6 +1,6 @@
 {
   "name": "project2_pug",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Convert html file directories to pug",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Miguel98R/HtmlToPug-Convertidor.git"
+    "url": "git+https://github.com/Miguel98R/project2Pug.git"
   },
   "keywords": [
     "html",
@@ -23,9 +23,9 @@
   "author": "Jose Miguel Rosas Jimenez",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Miguel98R/HtmlToPug-Convertidor/issues"
+    "url": "https://github.com/Miguel98R/project2Pug/issues"
   },
-  "homepage": "https://github.com/Miguel98R/HtmlToPug-Convertidor#readme",
+  "homepage": "https://github.com/Miguel98R/project2Pug#readme",
   "dependencies": {
     "body-parser": "^1.20.1",
     "commander": "^10.0.0",
@@ -40,6 +40,6 @@
     "nodemon": "^2.0.20"
   },
   "bin": {
-    "project2pug": "cli.js"
+    "project2_pug": "cli.js"
   }
 }
