@@ -1,6 +1,6 @@
 <div align="center"><img  src="public/img/logo.png" /></div>
 
-#  project2Pug
+
 *html template converter to templates with pug as view engine*
 
 Set a folder where the files to be found will be to be the input directory, so set a folder for the output files
