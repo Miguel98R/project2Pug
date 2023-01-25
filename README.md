@@ -36,17 +36,35 @@ Then visit http://localhost:3008/*
 
 Also has the option to convert your html template to pug via CLI
 
+
+command:
+```
+convert
+```
 options:
 ```
 -i, --inDirectory <inDirectory...>    location of the folder where the files to be converted are
 -o, --OutDirectory <OutDirectory...>  location of the folder where the converted files will be saved
 ```
 
-command:
+example usage:
 ```
 project2Pug -i "/home/mike98/Desktop/html_files" -o "/home/mike98/Desktop/pug_files"
 ```
 
+Start web interface by CLI
+
+command:
+```
+gui
+```
+example usage:
+```
+project2Pug gui
+```
+
+Then visit http://localhost:3008/*
+*By default start on port 3008 , this can be modified in the index.js file
 
 ---
 # Initializing template converted
@@ -74,7 +92,7 @@ Note: if in your template static files are in an **assets** folder, this folder 
 
 ---
 
-<h4 align="center">Mike Rosas © 2023  | project2Pug v1.0.2</h4>
+<h4 align="center">Mike Rosas © 2023  | project2Pug v1.0.3</h4>
 <h4 align="center">Developed by: Jose Miguel Rosas Jimenez</h4>
 
 
