@@ -9,7 +9,7 @@ let {
     removePugFromFileRoutes,
     CreateFoldersInPug_out,
     minifyHTML
-} = require('../htmlToPugConverter')
+} = require('../project2pug')
 
 router.post('/convert/', async function (req, res) {
     let {in_directori, out_directori} = req.body

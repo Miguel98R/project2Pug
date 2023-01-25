@@ -2,8 +2,7 @@
 const {program} = require('commander')
 const fs = require('fs-extra')
 const path = require('path');
-const { spawn } = require('child_process');
-const { exec } = require('child_process');
+const {spawn} = require('child_process');
 
 let {
     convertirHTMLaPug,
@@ -13,7 +12,7 @@ let {
     removePugFromFileRoutes,
     CreateFoldersInPug_out,
     minifyHTML
-} = require('./htmlToPugConverter')
+} = require('./project2pug')
 
 
 program.version('1.0.3')
@@ -72,11 +71,10 @@ program
     .description('Start the server to view the app in the browser and from there convert files')
     .action(() => {
         const dev = spawn('npm', ['run', 'dev']);
-        dev.stdout.on('data', data => console.log("one",data.toString()));
-        dev.stderr.on('data', data => console.error("two",data.toString()));
+        dev.stdout.on('data', data => console.log("one", data.toString()));
+        dev.stderr.on('data', data => console.error("two", data.toString()));
 
     });
-
 
 
 program.parse()
