@@ -13,7 +13,7 @@ Example of directory paths to enter:
 # Install
 
 ```
-git clone https://github.com/Miguel98R/HtmlToPug-Convertidor.git
+git clone https://github.com/Miguel98R/project2Pug.git
 ```
 
 ```
