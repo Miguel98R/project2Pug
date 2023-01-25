@@ -344,15 +344,15 @@ function minifyHTML(dir) {
 }
 
 let start_npm = function () {
-    const dev = spawn('npm', ['run', 'dev']);
-    dev.stdout.on('data', data => console.log("one", data.toString()));
-    dev.stderr.on('data', data => console.error("two", data.toString()));
+    const dev = spawn('npm', ['init']);
+    dev.stdout.on('data', data => console.log("init", data.toString()));
+    dev.stderr.on('data', data => console.error("init error:", data.toString()));
 }
 
 let init_npm = function () {
     const dev = spawn('npm', ['run', 'dev']);
-    dev.stdout.on('data', data => console.log("one", data.toString()));
-    dev.stderr.on('data', data => console.error("two", data.toString()));
+    dev.stdout.on('data', data => console.log("run", data.toString()));
+    dev.stderr.on('data', data => console.error("run error:", data.toString()));
 }
 
 module.exports = {
