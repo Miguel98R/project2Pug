@@ -2,6 +2,8 @@
 const {program} = require('commander')
 const fs = require('fs-extra')
 const path = require('path');
+const { spawn } = require('child_process');
+const { exec } = require('child_process');
 
 let {
     convertirHTMLaPug,
@@ -10,11 +12,11 @@ let {
     replacePathsInPugFiles,
     removePugFromFileRoutes,
     CreateFoldersInPug_out,
-    indentHTML
+    minifyHTML
 } = require('./htmlToPugConverter')
 
 
-program.version('1.0.0')
+program.version('1.0.3')
 program
     .command('convert')
     .description('html template converter to templates with pug as view engine \n')
@@ -39,7 +41,7 @@ program
             return
         }
 
-        indentHTML(inPath)
+        minifyHTML(inPath)
         convertirHTMLaPug(inPath, inPath, OutPath)
         console.log(" ** ** ** **  ** ** Converting files ** ** ** ** **")
 
@@ -57,13 +59,24 @@ program
                 removePugFromFileRoutes(OutPath + "/viewEngine/routes.js")
                 CreateFoldersInPug_out(OutPath)
 
-               
+
                 console.log("Files converted correctly")
             }
 
 
         }, 1400)
     })
+
+program
+    .command('gui')
+    .description('Start the server to view the app in the browser and from there convert files')
+    .action(() => {
+        const dev = spawn('npm', ['run', 'dev']);
+        dev.stdout.on('data', data => console.log("one",data.toString()));
+        dev.stderr.on('data', data => console.error("two",data.toString()));
+
+    });
+
 
 
 program.parse()

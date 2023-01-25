@@ -4,7 +4,7 @@ const router = express.Router()
 router.get("/", async (req, res) => {
 
     res.render('home', {
-        title: 'Html to pug app | Home ',
+        title: 'project2pug || Home ',
     })
 })
 

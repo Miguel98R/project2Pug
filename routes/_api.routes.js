@@ -8,7 +8,7 @@ let {
     replacePathsInPugFiles,
     removePugFromFileRoutes,
     CreateFoldersInPug_out,
-    indentHTML
+    minifyHTML
 } = require('../htmlToPugConverter')
 
 router.post('/convert/', async function (req, res) {
@@ -16,7 +16,7 @@ router.post('/convert/', async function (req, res) {
 
     try {
 
-        indentHTML(in_directori)
+        minifyHTML(in_directori)
         convertirHTMLaPug(in_directori, in_directori, out_directori)
 
 
@@ -46,11 +46,13 @@ router.post('/mover_convertidos/', async function (req, res) {
         fs.appendFileSync(out_directori + "/viewEngine/routes.js", `module.exports = router \n`);
 
         if (fs.existsSync(in_directori + "/viewEngine")) {
+
             fs.remove(in_directori + "/viewEngine");
             deletePugFiles(in_directori);
             replacePathsInPugFiles(out_directori)
             removePugFromFileRoutes(out_directori + "/viewEngine/routes.js")
             CreateFoldersInPug_out(out_directori)
+
 
 
         }

@@ -28,3 +28,18 @@ const notyf = new Notyf({
     ]
 });
 
+
+// Define el número de esferas
+    var sphereCount = 605;
+
+// Crea un bucle para generar las esferas
+for (var i = 0; i < sphereCount; i++) {
+    // Crea una nueva esfera
+    var sphere = document.createElement("div");
+    sphere.classList.add("sphere");
+    // Genera una posición aleatoria en el body
+    sphere.style.left = Math.random() * 100 + "%";
+    sphere.style.top = Math.random() * 100 + "%";
+    // Agrega la esfera al body
+    document.body.appendChild(sphere);
+}

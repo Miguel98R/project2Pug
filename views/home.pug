@@ -7,11 +7,13 @@ html(lang="es")
         .loading.show
             p Cargando...
             .spin
-        div.bg-black.p-4
+        .bg-black.star-container.py-4
 
-        .container.my-4
 
-            h1.fw-bolder.text-center HTLM converter to Pug
+        .container.my-5.bg-white
+
+            div.text-center.my-5
+                img.border.border-5.border-radius(src='/public/img/logo.png' )
 
             div.my-4
                 .row
@@ -23,6 +25,7 @@ html(lang="es")
                                     |  Directorio de los archivos HTML
                             .card-body
                                 input.form-control#inputOriginDir(placeholder='Ingresa la direccion del directorio de archivos HTML' type='text' )
+
 
                     .col-6
                         .card
@@ -41,11 +44,19 @@ html(lang="es")
                     .col-4
 
 
-            footer.my-3
+            footer.my-3.py-3
                 .text-center.p-3
                     | © 2023
                     a.text-dark.fw-bold  by Jose Miguel Rosas
-
+                div.text-center
+                    a(href='https://www.facebook.com/miguelrosasjmz/' target='_blank').btn.btn-primary.mx-2
+                        i.fab.fa-facebook
+                    a(href='https://github.com/Miguel98R/project2Pug' target='_blank').btn.btn-dark.mx-2
+                        i.fab.fa-github-square
+                    a(href='https://github.com/Miguel98R' target='_blank').btn.btn-dark.mx-2
+                        i.fab.fa-github
+                    a(href='https://www.npmjs.com/package/project2pug' target='_blank').btn.btn-danger.mx-2
+                        i.fab.fa-npm
 
     include template/scripts
     script( src='./public/core/js/common.js')

@@ -45,27 +45,28 @@
   }
 }
 
-body {
-  font-family: 'Rajdhani', sans-serif;
+
+
+.sphere {
+    position: fixed;
+    width: 0;
+    height: 0;
+    opacity: 0.1;
+    border-right: 10px solid red;
+    border-bottom: 15px solid darkslategray;
+    border-left: 10px solid yellowgreen;
+    transform: rotate(8deg);
+    animation: appear-disappear 5s infinite;
 }
 
-#panelContainer {
-	display: flex;
-	flex-direction: row;
-	background-color: transparent;
-	flex: 1;
-	overflow: hidden;
-}
-.panel {
-	position: relative;
-
-}
-.one {
-	position: relative;
-	width: 15%;
-
-}
-.two {
-	position: relative;
-	width: 85%;
+@keyframes appear-disappear {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.1;
+    }
+    100% {
+        opacity: 0;
+    }
 }

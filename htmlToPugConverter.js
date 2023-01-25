@@ -1,6 +1,6 @@
 const path = require('path');
 const html2pug = require('html2pug')
-const html2jade = require('html2jade')
+const minify = require('html-minifier').minify;
 const fs = require('fs-extra')
 let convertirHTMLaPug = function (ruta, original_path, out_directori) {
     fs.readdirSync(ruta, {withFileTypes: true}).forEach(file => {
@@ -97,10 +97,10 @@ let movePugFiles = function (pug_salida) {
         const filePath = path.join(pug_salida, file);
 
         // si el archivo tiene extensión .pug
-        if (path.extname(file) === '.pug') {
+        if (path.extname(file) == '.pug') {
             // mover el archivo a la carpeta views
             fs.renameSync(filePath, path.join(pug_salida, 'views', file));
-
+            console.log("moviendo")
         } else if (fs.lstatSync(filePath).isDirectory()) {
 
 
@@ -312,22 +312,34 @@ let CreateFoldersInPug_out = function (filepath) {
 
 }
 
-let indentHTML = function (dir) {
-    // obtener todos los archivos en la carpeta y subcarpetas
-    const files = getAllFilesInDir(dir);
-
-    // iterar a través de cada archivo
-    for (const file of files) {
-        // verificar si es un archivo HTML
-        if (path.extname(file) === ".html") {
-            // leer el contenido del archivo
-            let content = fs.readFileSync(file, "utf8");
-            // identar el contenido utilizando una expresión regular
-            content = content.replace(/^(?=\S)/gm, "  ");
-            // escribir el contenido identado de nuevo en el archivo
-            fs.writeFileSync(file, content, "utf8");
+function minifyHTML(dir) {
+    // Leer todos los archivos en la carpeta y subcarpetas
+    fs.readdirSync(dir).forEach(file => {
+        let fullPath = path.join(dir, file);
+        // Si el archivo es una carpeta, llamar recursivamente a la función
+        if (fs.lstatSync(fullPath).isDirectory()) {
+            minifyHTML(fullPath);
         }
-    }
+        // Si el archivo es un archivo HTML, minificarlo
+        else if (path.extname(fullPath) === '.html') {
+            // Leer el contenido del archivo HTML
+            let html = fs.readFileSync(fullPath, 'utf8');
+
+            // Configurar las opciones de minificación
+            let options = {
+                collapseWhitespace: true,
+                removeComments: true,
+                minifyJS: true,
+                minifyCSS: true
+            };
+
+            // Minificar el contenido del archivo HTML
+            let minifiedHTML = minify(html, options);
+
+            // Sobrescribir el archivo original con el HTML minificado
+            fs.writeFileSync(fullPath, minifiedHTML);
+        }
+    });
 }
 
 module.exports = {
@@ -337,5 +349,5 @@ module.exports = {
     replacePathsInPugFiles,
     removePugFromFileRoutes,
     CreateFoldersInPug_out,
-    indentHTML
+    minifyHTML
 };
