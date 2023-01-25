@@ -1,6 +1,6 @@
 {
-  "name": "htmltopug-convertidor",
-  "version": "1.0.0",
+  "name": "project2pug",
+  "version": "1.0.2",
   "description": "Convert html file directories to pug",
   "main": "index.js",
   "scripts": {
@@ -33,9 +33,12 @@
     "html2pug": "^4.0.0",
     "morgan": "^1.10.0",
     "pug": "^3.0.2"
-
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
+  },
+  "bin": {
+    "project2pug": "cli.js"
   }
 }
+

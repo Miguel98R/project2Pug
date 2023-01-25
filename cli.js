@@ -1,5 +1,8 @@
+#! /usr/bin/env node
 const {program} = require('commander')
 const fs = require('fs-extra')
+const path = require('path');
+
 let {
     convertirHTMLaPug,
     movePugFiles,
@@ -8,12 +11,12 @@ let {
     removePugFromFileRoutes,
     CreateFoldersInPug_out,
     indentHTML
-} = require('htmlToPugConverter')
+} = require('./htmlToPugConverter')
 
 
 program.version('1.0.0')
 program
-    .command('htmlToPug')
+    .command('convert')
     .description('html template converter to templates with pug as view engine \n')
     .option('-i, --inDirectory <inDirectory...>', 'location of the folder where the files to be converted are')
     .option('-o, --OutDirectory <OutDirectory...>', 'location of the folder where the converted files will be saved')
@@ -21,6 +24,8 @@ program
 
         let inPath = inDirectory[0]
         let OutPath = OutDirectory[0]
+        inPath = path.join(inPath)
+        OutPath = path.join(OutPath)
 
         let exists = fs.existsSync(inPath);
         if (!exists) {
@@ -34,7 +39,7 @@ program
             return
         }
 
-        indentHTML(in_directori)
+        indentHTML(inPath)
         convertirHTMLaPug(inPath, inPath, OutPath)
         console.log(" ** ** ** **  ** ** Converting files ** ** ** ** **")
 

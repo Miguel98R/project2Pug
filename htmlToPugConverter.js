@@ -1,5 +1,6 @@
 const path = require('path');
 const html2pug = require('html2pug')
+const html2jade = require('html2jade')
 const fs = require('fs-extra')
 let convertirHTMLaPug = function (ruta, original_path, out_directori) {
     fs.readdirSync(ruta, {withFileTypes: true}).forEach(file => {
@@ -29,6 +30,7 @@ let convertirHTMLaPug = function (ruta, original_path, out_directori) {
             if (file.name.endsWith(".html")) {
 
                 // es un archivo html, se convierte a pug
+
                 let rutaHTML = `${ruta}/${file.name}`;
                 let rutaPug = `${ruta}/${file.name.replace(".html", ".pug")}`;
 
