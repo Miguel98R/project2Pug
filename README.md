@@ -1,8 +1,8 @@
 <div align="center"><img  src="public/img/logo.png" /></div>
 <br>
-<div align="center"><mark> html template converter to templates with pug as view engine </mark></div>
-
-
+<div align="center"><em>html template converter to templates with pug as view engine </em></div>
+<br>
+<br>
 
 Set a folder where the files to be found will be to be the input directory, so set a folder for the output files
 
