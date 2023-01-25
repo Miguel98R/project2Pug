@@ -1,6 +1,6 @@
 <div align="center"><img  src="public/img/logo.png" /></div>
 
-# HtmlToPug-Converter
+#  project2Pug
 *html template converter to templates with pug as view engine*
 
 Set a folder where the files to be found will be to be the input directory, so set a folder for the output files 
@@ -43,7 +43,7 @@ options:
 
 command:
 ```
-node cli.js  htmlToPug -i "/home/mike98/Desktop/html_files" -o "/home/mike98/Desktop/pug_files"
+project2Pug -i "/home/mike98/Desktop/html_files" -o "/home/mike98/Desktop/pug_files"
 ```
 
 
@@ -73,7 +73,7 @@ Note: if in your template static files are in an **assets** folder, this folder 
 
 ---
 
-<h4 align="center">Mike Rosas © 2023  | HtmlToPug-Converter v1.0.0</h4>
+<h4 align="center">Mike Rosas © 2023  | project2Pug v1.0.2</h4>
 <h4 align="center">Developed by: Jose Miguel Rosas Jimenez</h4>
 
 
