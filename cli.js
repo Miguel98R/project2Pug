@@ -3,6 +3,7 @@ const {program} = require('commander')
 const fs = require('fs-extra')
 const path = require('path');
 
+const {spawn} = require('child_process');
 
 let {
     convertirHTMLaPug,
@@ -84,8 +85,16 @@ program
     .description('Install the node modules in the output folder and start the server so you can see your template converted to pug')
     .action(() => {
 
-        init_npm()
-        start_npm()
+        const install = spawn('npm', ['install']);
+        install.stdout.on('data', data => console.log("i", data.toString()));
+        install.stderr.on('data', data => console.error("i error:", data.toString()));
+
+        setTimeout(function () {
+            const dev = spawn('npm', ['run', 'dev']);
+            dev.stdout.on('data', data => console.log("run", data.toString()));
+            dev.stderr.on('data', data => console.error("run error:", data.toString()));
+
+        },300)
 
     });
 

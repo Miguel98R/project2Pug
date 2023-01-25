@@ -32,7 +32,7 @@ can also install the converter by npm
 
 command:
 ```
-npm i -g project2pug
+npm i -g project2_pug
 ```
 start converter interface
 
@@ -42,7 +42,7 @@ gui
 ```
 example usage:
 ```
-project2Pug gui
+project2_pug gui
 ```
 
 Then visit http://localhost:3008/*
@@ -67,7 +67,7 @@ options:
 
 example usage:
 ```
-project2Pug -i "/home/mike98/Desktop/html_files" -o "/home/mike98/Desktop/pug_files"
+project2_pug -i "/home/mike98/Desktop/html_files" -o "/home/mike98/Desktop/pug_files"
 ```
 
 install node modules and start the server in the output folder
@@ -78,7 +78,7 @@ star-dev
 ```
 example usage:
 ```
-project2Pug star-dev
+project2_pug star-dev
 ```
 
 
@@ -112,9 +112,7 @@ Note: if in your template static files are in an **assets** folder, this folder 
 
 ---
 
-<h4 align="center">Mike Rosas © 2023  | project2Pug v1.0.8</h4>
+<h4 align="center">Mike Rosas © 2023  | project2Pug v1.0.0</h4>
 <h4 align="center">Developed by: Jose Miguel Rosas Jimenez</h4>
-
-
 
 
