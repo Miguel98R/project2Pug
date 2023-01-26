@@ -43,8 +43,6 @@ router.post('/mover_convertidos/', async function (req, res) {
 
         movePugFiles(out_directori)
 
-        fs.appendFileSync(out_directori + "/viewEngine/routes.js", `module.exports = router \n`);
-
         if (fs.existsSync(in_directori + "/viewEngine")) {
 
             fs.remove(in_directori + "/viewEngine");

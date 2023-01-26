@@ -106,7 +106,7 @@ let movePugFiles = function (pug_salida) {
         } else if (fs.lstatSync(filePath).isDirectory()) {
 
 
-            if (file == "vendor" || file == "owl-carousel" || file == "fontAwesome" || file == "font-awesome" || file === 'assets' || file === 'css' || file === 'js' || file === 'img' || file === 'images' || file === 'core' || file === 'fonts' || file == 'icon' || file == 'plugins' || file == 'scss') {
+            if (file=="webfonts" || file == "vendor" || file == "owl-carousel" || file == "fontAwesome" || file == "font-awesome" || file === 'assets' || file === 'css' || file === 'js' || file === 'img' || file === 'images' || file === 'core' || file === 'fonts' || file == 'icon' || file == 'plugins' || file == 'scss') {
                 // mover la carpeta a la carpeta public
                 fs.renameSync(filePath, path.join(pug_salida, 'public', file));
 
@@ -155,6 +155,7 @@ let replacePathsInPugFiles = function (rootDir) {
         fileContent = fileContent.replace(/='css\//g, "='/public/css/");
         fileContent = fileContent.replace(/='img\//g, "='/public/img/");
         fileContent = fileContent.replace(/='images\//g, "='/public/images/");
+
         fileContent = fileContent.replace(/='scss\//g, "='/public/scss/");
         fileContent = fileContent.replace(/='plugins\//g, "='/public/plugins/");
         fileContent = fileContent.replace(/='icon\//g, "='/public/icon/");
@@ -251,7 +252,7 @@ let CreateFoldersInPug_out = function (filepath) {
 
     fs.writeFile(filepath + '/' + 'index.js', text, 'utf8', (err) => {
         if (err) throw err;
-        console.log('Archivo creado exitosamente!');
+        console.log('Archivo index.js creado exitosamente!');
     });
 
 
@@ -280,7 +281,7 @@ let CreateFoldersInPug_out = function (filepath) {
 
     fs.writeFile(filepath + '/' + 'package.json', text, 'utf8', (err) => {
         if (err) throw err;
-        console.log('Archivo creado exitosamente!');
+        console.log('Archivo package.json creado exitosamente!');
     });
 
 
@@ -298,7 +299,7 @@ let CreateFoldersInPug_out = function (filepath) {
 
     fs.writeFile(filepath + '/' + 'db.js', text, 'utf8', (err) => {
         if (err) throw err;
-        console.log('Archivo creado exitosamente!');
+        console.log('Archivo db.js creado  exitosamente!');
     });
 
     text = "const express = require('express')\n" +
@@ -308,7 +309,7 @@ let CreateFoldersInPug_out = function (filepath) {
 
     fs.writeFile(filepath + '/routes/' + '_api.js', text, 'utf8', (err) => {
         if (err) throw err;
-        console.log('Archivo creado exitosamente!');
+        console.log('Archivo  _api.js creado exitosamente!');
     });
 
     replaceIndex(filepath + '/viewEngine/routes.js')
@@ -329,10 +330,18 @@ function replaceIndex(filePath) {
             if (err) {
                 console.log(err);
             } else {
-                console.log("La primera ocurrencia de 'index' ha sido reemplazada con 'newword' en el archivo " + filePath);
+
+                let text = "router.get(\"/index\", (req, res) => {\n" +
+                    "        res.render(\"index\");\n " +
+                    "    });module.exports = router \n"
+
+                fs.appendFileSync(filePath, text);
+
+
             }
         });
     });
+
 }
 
 function minifyHTML(dir) {

@@ -18,7 +18,7 @@ let {
 } = require('./project2pug')
 
 
-program.version('1.0.3')
+program.version('1.0.5')
 program
     .command('convert')
     .description('html template converter to templates with pug as view engine \n')
@@ -81,7 +81,7 @@ program
 
 program
     .command('start_dev')
-    .description('node modules')
+    .description('install node modules and start server ')
     .action(() => {
         console.log("loading...")
         init_npm()
@@ -89,7 +89,7 @@ program
 
             start_npm()
 
-        },6500)
+        },8500)
 
 
     });
