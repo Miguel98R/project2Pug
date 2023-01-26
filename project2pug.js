@@ -311,7 +311,28 @@ let CreateFoldersInPug_out = function (filepath) {
         console.log('Archivo creado exitosamente!');
     });
 
+    replaceIndex(filepath + '/viewEngine/routes.js')
+}
+function replaceIndex(filePath) {
+    // Leer el archivo
+    fs.readFile(filePath, 'utf8', function(err, data) {
+        if (err) {
+            console.log(err);
+            return;
+        }
 
+        // Reemplazar la primera ocurrencia de "index" con "newword"
+        var newData = data.replace(/index/i, "");
+
+        // Escribir los cambios en el archivo
+        fs.writeFile(filePath, newData, 'utf8', function(err) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log("La primera ocurrencia de 'index' ha sido reemplazada con 'newword' en el archivo " + filePath);
+            }
+        });
+    });
 }
 
 function minifyHTML(dir) {
@@ -345,12 +366,14 @@ function minifyHTML(dir) {
 }
 
 let init_npm = function () {
+    console.log("-------install loading...----------")
     const install = spawn('npm', ['install']);
     install.stdout.on('data', data => console.log("i", data.toString()));
     install.stderr.on('data', data => console.error("i error:", data.toString()));
 }
 
 let start_npm  = function () {
+    console.log("-------start...----------")
     const dev = spawn('npm', ['run', 'dev']);
     dev.stdout.on('data', data => console.log("run", data.toString()));
     dev.stderr.on('data', data => console.error("run error:", data.toString()));
@@ -365,5 +388,6 @@ module.exports = {
     CreateFoldersInPug_out,
     minifyHTML,
     start_npm
-    ,init_npm
+    ,init_npm,
+
 };

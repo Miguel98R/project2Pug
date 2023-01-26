@@ -7,7 +7,7 @@ const app = express()
 
 //configuraciones
 
-app.set('port',3008 )
+app.set('port',3008)
 app.set('appName',"htmlToPug-Converter")
 
 app.set('views', path.join(__dirname, 'views'))

@@ -11,7 +11,10 @@ let {
     replacePathsInPugFiles,
     removePugFromFileRoutes,
     CreateFoldersInPug_out,
-    minifyHTML
+    minifyHTML,
+    start_npm
+    ,init_npm,
+
 } = require('./project2pug')
 
 
@@ -72,28 +75,21 @@ program
     .description('Start the server to view the app in the browser and from there convert files')
     .action(() => {
 
-        const dev = spawn('npm', ['run', 'dev']);
-        dev.stdout.on('data', data => console.log("one", data.toString()));
-        dev.stderr.on('data', data => console.error("two", data.toString()));
+        require('./index.js');
 
     });
 
 program
-    .command('star-dev')
+    .command('start_dev')
     .description('node modules')
     .action(() => {
-        const init = spawn('npm', ['install']);
-        init.stdout.on('data', data => console.log("one", data.toString()));
-        init.stderr.on('data', data => console.error("two", data.toString()));
-
-
+        console.log("loading...")
+        init_npm()
         setTimeout(function (){
 
-            const dev = spawn('npm', ['run', 'dev']);
-            dev.stdout.on('data', data => console.log("one", data.toString()));
-            dev.stderr.on('data', data => console.error("two", data.toString()));
+            start_npm()
 
-        },2000)
+        },6500)
 
 
     });

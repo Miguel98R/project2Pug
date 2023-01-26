@@ -74,11 +74,11 @@ install node modules and start the server in the output folder
 
 command:
 ```
-star-dev
+start_dev
 ```
 example usage:
 ```
-project2_pug star-dev
+project2_pug start_dev
 ```
 
 
@@ -105,14 +105,14 @@ npm run dev
 in the CLI section, the command to install the node modules and start the server in the output folder is shown
 
 The project to be launched on port 3055 , this can be modified in the index.js of your output folder  
-Then visit  http:///localhost:3055/index *
+Then visit  http://localhost:3055 *
 
 
 Note: if in your template static files are in an **assets** folder, this folder will be saved in the **public** folder just move the contents to the root of the **public** folder for your template to work properly
 
 ---
 
-<h4 align="center">Mike Rosas © 2023  | project2Pug v1.0.3</h4>
+<h4 align="center">Mike Rosas © 2023  | project2Pug v1.0.5</h4>
 <h4 align="center">Developed by: Jose Miguel Rosas Jimenez</h4>
 
 
