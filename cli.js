@@ -18,7 +18,7 @@ let {
 } = require('./project2pug')
 
 
-program.version('1.0.5')
+program.version('1.0.6')
 program
     .command('convert')
     .description('html template converter to templates with pug as view engine \n')
