@@ -18,7 +18,7 @@ let {
 } = require('./project2pug')
 
 
-program.version('1.0.6')
+program.version('1.0.7')
 program
     .command('convert')
     .description('html template converter to templates with pug as view engine \n')
@@ -75,7 +75,7 @@ program
     .description('Start the server to view the app in the browser and from there convert files')
     .action(() => {
 
-        require('./index.js');
+        require('./index');
 
     });
 
@@ -89,7 +89,7 @@ program
 
             start_npm()
 
-        },8500)
+        },9500)
 
 
     });
