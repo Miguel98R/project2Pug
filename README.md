@@ -67,7 +67,7 @@ options:
 
 example usage:
 ```
-project2_pug -i "/home/mike98/Desktop/html_files" -o "/home/mike98/Desktop/pug_files"
+project2_pug convert -i "/home/mike98/Desktop/html_files" -o "/home/mike98/Desktop/pug_files"
 ```
 
 install node modules and start the server in the output folder
@@ -112,7 +112,7 @@ Note: if in your template static files are in an **assets** folder, this folder 
 
 ---
 
-<h4 align="center">Mike Rosas © 2023  | project2Pug v1.0.8</h4>
+<h4 align="center">Mike Rosas © 2023  | project2Pug v1.0.9</h4>
 <h4 align="center">Developed by: Jose Miguel Rosas Jimenez</h4>
 
 

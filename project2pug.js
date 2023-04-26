@@ -106,7 +106,7 @@ let movePugFiles = function (pug_salida) {
         } else if (fs.lstatSync(filePath).isDirectory()) {
 
 
-            if (file=="webfonts" || file == "vendor" || file == "owl-carousel" || file == "fontAwesome" || file == "font-awesome" || file === 'assets' || file === 'css' || file === 'js' || file === 'img' || file === 'images' || file === 'core' || file === 'fonts' || file == 'icon' || file == 'plugins' || file == 'scss') {
+            if (file=="webfonts" || file == "vendor" || file == "owl-carousel" || file == "fontAwesome" || file == "font-awesome" || file === 'assets' || file === 'css' || file === 'js' || file === 'img' || file === 'images' || file === 'core' || file === 'fonts' || file == 'icon' || file == 'plugins' || file == 'scss'|| file == 'sass' || file == 'media') {
                 // mover la carpeta a la carpeta public
                 fs.renameSync(filePath, path.join(pug_salida, 'public', file));
 
@@ -199,6 +199,12 @@ let CreateFoldersInPug_out = function (filepath) {
     if (!fs.existsSync(filepath + "/controllers")) {
         fs.mkdirSync(filepath + "/controllers");
     }
+
+    // Crear la carpeta modelos si no existe
+    if (!fs.existsSync(filepath + "/models")) {
+        fs.mkdirSync(filepath + "/models");
+    }
+
     // Crear la carpeta helpers si no existe
     if (!fs.existsSync(filepath + "/helpers")) {
         fs.mkdirSync(filepath + "/helpers");
